@@ -1,0 +1,49 @@
+[System]
+Name='Ship_FuzzyPD'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='E'
+Range=[-1 1]
+NumMFs=3
+MF1='NE':'trapmf',[-1.9 -1.1 -0.3994708994709 0]
+MF2='ZE':'trimf',[-0.399 0 0.394179894179894]
+MF3='PO':'trapmf',[1.8e-005 0.394179894179894 1.11 1.91]
+
+[Input2]
+Name='DE'
+Range=[-1 1]
+NumMFs=3
+MF1='NE':'trapmf',[-1.9 -1.1 -0.997354497354497 0]
+MF2='ZE':'trimf',[-0.987 0 0.997354497354497]
+MF3='PO':'trapmf',[0.00529 0.997354497354497 1.11 1.91]
+
+[Output1]
+Name='U'
+Range=[0 1]
+NumMFs=5
+MF1='NB':'constant',[-1]
+MF2='NS':'constant',[-0.5]
+MF3='ZE':'constant',[0]
+MF4='PS':'constant',[0.5]
+MF5='PB':'constant',[1]
+
+[Rules]
+1 1, 5 (1) : 1
+1 2, 4 (1) : 1
+1 3, 3 (1) : 1
+2 1, 4 (1) : 1
+2 2, 3 (1) : 1
+2 3, 2 (1) : 1
+3 1, 3 (1) : 1
+3 2, 2 (1) : 1
+3 3, 1 (1) : 1
